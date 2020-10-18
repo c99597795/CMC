@@ -1,0 +1,382 @@
+<!doctype html>
+<html>
+  <head>
+	<meta charset="utf-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="image/CMC_icon.png" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<!--CMC_CSS-->
+	<link rel=stylesheet type="text/css" href="css/CMC_CSS.css">
+  <link rel=stylesheet type="text/css" href="css/animate.css">
+  <!-- Jquery-->
+  
+<!--DatePicker Css and JS-->
+<link href="picker.css" rel="stylesheet">
+<script src="picker.js"></script>
+    <title>大成國樂社</title>
+  </head>
+<body>
+<style>
+  #background{
+    width:100%; 
+    padding:10px; 
+    background: url('image/background.jpg');
+    background-attachment: fixed;
+  }
+  p{
+    margin-top:10px;
+    margin-bottom:-5px;
+  }
+</style>
+<script>
+  function Datepicker(){
+'use strict';
+var dayNamesShort = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var icon = '<svg viewBox="0 0 512 512"><polygon points="268.395,256 134.559,121.521 206.422,50 411.441,256 206.422,462 134.559,390.477 "/></svg>';
+var root = document.getElementById('picker');
+var dateInput = document.getElementById('date');
+var altInput = document.getElementById('alt');
+var doc = document.documentElement;
+function format ( dt ) {
+  return Picker.prototype.pad(dt.getDate()) + ' ' + monthNames[dt.getMonth()].slice(0,3) + ' ' + dt.getFullYear();
+}
+function show ( ) {
+  root.removeAttribute('hidden');
+}
+function hide ( ) {
+  root.setAttribute('hidden', '');
+  doc.removeEventListener('click', hide);
+}
+function onSelectHandler ( ) {
+  var value = this.get();
+  if ( value.start ) {
+    dateInput.value = value.start.Ymd();
+    altInput.value = format(value.start);
+    hide();
+  }
+}
+var picker = new Picker(root, {
+  min: new Date(dateInput.min),
+  max: new Date(dateInput.max),
+  icon: icon,
+  twoCalendars: false,
+  dayNamesShort: dayNamesShort,
+  monthNames: monthNames,
+  onSelect: onSelectHandler
+});
+root.parentElement.addEventListener('click', function ( e ) { e.stopPropagation(); });
+dateInput.addEventListener('change', function ( ) {
+  if ( dateInput.value ) {
+    picker.select(new Date(dateInput.value));
+  } else {
+    picker.clear();
+  }
+});
+altInput.addEventListener('focus', function ( ) {
+  altInput.blur();
+  show();
+  doc.addEventListener('click', hide, false);
+});
+};
+</script>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #FF5F4F; font-size:20px;" role="navigation">
+  <img src="image/CMC_icon_white.png" width="35" height="40" class="d-inline-block align-top" alt="CMC_icon">
+  <!--標題名稱-->
+  <a class="navbar-brand" href="#"style="margin-left:10px;" >大成國樂社</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">首頁<span class="sr-only">(current)</span></a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="CMC_About.html">聯絡我們</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link  active" href="CMC_Form.html">加入我們</a>
+    </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          樂器介紹
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="CMC_instrument.html#Wind">吹管</a>
+          <a class="dropdown-item" href="CMC_instrument.html#String">拉弦</a>
+          <a class="dropdown-item" href="CMC_instrument.html#Pluck">彈撥</a>
+          <a class="dropdown-item" href="CMC_instrument.html#Bass">低音</a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
+  </div>
+ 
+</nav>
+<div class="container-fluid" id="background">
+        <div class="row">
+            <div class="m-auto">
+                <h1>
+                    想加入我們大成國樂社嗎?
+                </h1>
+                
+                    <div class="form-group">
+                      <label for="Name">姓名</label>
+                      <input type="name" class="form-control" id="stuName" placeholder="你的姓名">
+                    </div>
+                    <div class="form-group">
+                      <label for="Class">科系</label>
+                      <input type="class" class="form-control" id="Class" placeholder="例如:數位系">
+                    </div>
+                    <div class="form-group">
+                        <label for="Grade">年級</label>
+                        <input type="text" class="form-control" id="Grade" placeholder="例如:大三">
+                      </div>
+                    <div>
+                    <div class="form-group">
+                        <label for="Number">學號</label>
+                        <input type="grade" class="form-control" id="Number" placeholder="例如:S10655099">
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">電子郵件</label>
+                        <input type="Email" class="form-control" id="Email" placeholder="例如:XXX@gmail.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="Phone">手機</label>
+                        <input type="Phone" class="form-control" id="Phone" placeholder="例如:0912345678">
+                    </div>
+                    <h2>學過什麼樂器嗎?</h2>
+                    <div style="font-size: 25px;">
+                    <p>吹管</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="Instrument"value="笛子">
+                        <label class="form-check-label" for="instrumentcheckbox1">笛子</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox2" name="Instrument"value="笙">
+                        <label class="form-check-label" for="inlineCheckbox2">笙</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3" name="Instrument"value="蕭">
+                        <label class="form-check-label" for="inlineCheckbox3">蕭</label>
+                      </div>
+                      <p>彈撥</p>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Instrument" value="琵琶">
+                        <label class="form-check-label" for="inlineCheckbox4">琵琶</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Instrument" value="柳琴">
+                        <label class="form-check-label" for="inlineCheckbox5">柳琴</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Instrument" value="中阮">
+                        <label class="form-check-label" for="inlineCheckbox6">中阮</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Instrument" value="大阮">
+                        <label class="form-check-label" for="inlineCheckbox7">大阮</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Instrument" value="揚琴">
+                        <label class="form-check-label" for="inlineCheckbox8">揚琴</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Instrument" value="古箏">
+                        <label class="form-check-label" for="inlineCheckbox9">古箏</label>
+                      </div>
+                      <p>拉弦</p>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Instrument" value="二胡">
+                        <label class="form-check-label" for="inlineCheckbox10">二胡</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Instrument" value="中胡">
+                        <label class="form-check-label" for="inlineCheckbox11">中胡</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Instrument" value="高胡">
+                        <label class="form-check-label" for="inlineCheckbox12">高胡</label>
+                      </div>
+                      <p>打擊</p>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Instrument" value="排鼓">
+                        <label class="form-check-label" for="inlineCheckbox13">排鼓</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Instrument" value="定音鼓">
+                        <label class="form-check-label" for="inlineCheckbox14">定音鼓</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Instrument" value="木琴">
+                        <label class="form-check-label" for="inlineCheckbox14">木琴</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Instrument" value="鐵琴">
+                        <label class="form-check-label" for="inlineCheckbox14">鐵琴</label>
+                      </div>
+                      <p>想上哪堂社課呢??</p>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Course" value="吹管">
+                        <label class="form-check-label" for="inlineCheckbox14">吹管</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Course" value="拉弦(胡琴)">
+                        <label class="form-check-label" for="inlineCheckbox14">拉弦(胡琴)</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Course" value="彈撥">
+                        <label class="form-check-label" for="inlineCheckbox14">彈撥</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Course" value="揚琴">
+                        <label class="form-check-label" for="inlineCheckbox14">揚琴</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Course" value="大提琴">
+                        <label class="form-check-label" for="inlineCheckbox14">大提琴</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"type="checkbox" id="inlineCheckbox3"name="Course" value="打擊">
+                        <label class="form-check-label" for="inlineCheckbox14">打擊</label>
+                      </div>
+                    </div>
+                    <div>
+                        <h5>出生年月日</h5>    
+                        <input class="date-input-native" id="date" type="date" name="date" min="1900-01-01" max="2099-01-01">
+                        <div id="picker" hidden></div>
+                    </div>
+                    <p>     </p>
+                    <div class="row">
+                        <div class="form-group col-8">
+
+                        </div>
+                        <div class="form-group col-4">
+                          <button id="btn1" type="button" class="btn btn-warning">點我報名</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function(){
+  $('#btn1').click(function(e){
+    alert('送出資料');
+        var status = true;
+        // 姓名
+        var Name = $('#stuName').val();
+        // 電話
+        var Phone = $('#Phone').val(); 
+        // 科系
+        var Clas = $('#Class').val(); 
+        //年級
+        var Grade = $('#Grade').val(); 
+        //學號
+        var number = $('#Number').val(); 
+        //Email
+        var Email = $('#Email').val(); 
+        //Birthday
+        var date = $('#date').val();
+        //Checkbox(instrument)
+        var checkbox = [];
+        var instruments = document.getElementsByName('Instrument');
+    for(var i = 0, len = instruments.length; i < len; i++) {
+      var instrument = instruments.item(i);
+      if (instrument.checked) {
+        checkbox.push(instrument.value);}}
+        var Instrument = checkbox.toString();
+        //Checkbox(Course)
+        var checkbox2 = [];
+        var Courses = document.getElementsByName('Course');
+    for(var i = 0, len = Courses.length; i < len; i++) {
+      var course = Courses.item(i);
+      if (course.checked) {
+        checkbox2.push(course.value);}}
+        var Course = checkbox2.toString();
+        // 擋住不填資料邏輯
+        if(Name == ''){
+          $('#stuName').css('border','1px solid #ff0000');
+          status = false;
+        }
+        if(Phone == ''){
+          $('#Phone').css('border','1px solid #ff0000');
+          status = false;
+        }
+        if(Clas == ''){
+          alert('請填寫科系喔');
+          status = false;
+        }
+        if(Grade == ''){
+          alert('請填寫年級喔');
+          status = false;
+        }
+        if(number == ''){
+          alert('請填寫學號喔');
+          status = false;
+        }
+        if(Email == ''){
+          alert('請填寫Email喔');
+          status = false;
+        }
+        // 如果 �必填欄位都過了 才會到這邊
+        if(status){
+          alert('資料都填完了');
+          // 增加日期資料
+          var currentdate = new Date();
+          var filltime = currentdate.getFullYear() + "/"
+                + (currentdate.getMonth() + 1) + "/"
+                + currentdate.getDate() + "  "
+                + currentdate.getHours() + ":"
+                + currentdate.getMinutes() + ":"
+                + currentdate.getSeconds();
+          // 打包 要的資料
+          var data = {
+            'name' : Name,
+            'phone':Phone,
+            'class': Clas,
+            'Grade': Grade,
+            'Number':number,
+            'Email': Email,
+            'Date': date,
+            'Instrument':Instrument,
+            'course':Course,
+            'time':filltime,
+          }
+          // 呼叫 send ajax function
+          send(data);
+          ;}
+        });
+        });
+    function send(data){
+      $.ajax({
+        // 這邊用get type
+        type: "get",
+        // api url - google appscript 產出的 url
+        url: "https://script.google.com/macros/s/AKfycbzsrbGezyFYgt7ruMIAC6cNvMac5y1-smacV-_ctOfGp83dNrs/exec",
+        // 剛剛整理好的資料帶入
+        data: data,
+        // 資料格式是JSON 
+        dataType: "JSON",
+        // 成功送出 會回頭觸發下面這塊感謝
+        success: function (response) {
+          console.log(response);
+          alert('報名成功！！！');
+        }
+      });}
+    
+
+</script>
+<!-- Bootstrap core JavaScript -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	</body>
+</html>

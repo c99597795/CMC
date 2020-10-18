@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+  <head>
+	<meta charset="utf-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="image/CMC_icon.png" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<!--CMC_CSS-->
+	<link rel=stylesheet type="text/css" href="css/CMC_CSS.css">
+	<link rel=stylesheet type="text/css" href="css/animate.css">
+	
+
+
+    <title>大成國樂社</title>
+  </head>
+<body id="background">
+<style>
+  :target:before {
+    content: "";
+    display: block;
+    margin-top:10px;
+    height: 70px;
+    }
+    #background{
+    width:100%; 
+    padding:10px; 
+    background: url('image/background.jpg');
+    background-attachment: fixed;
+  }
+</style>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #FF5F4F; font-size:20px;" role="navigation">
+  <img src="image/CMC_icon_white.png" width="35" height="40" class="d-inline-block align-top" alt="CMC_icon">
+  <!--標題名稱-->
+  <a class="navbar-brand" href="#"style="margin-left:10px;" >大成國樂社</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">首頁<span class="sr-only">(current)</span></a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link active" href="CMC_About.html">聯絡我們</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="CMC_Form.html">加入我們</a>
+    </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          樂器介紹
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="CMC_instrument.html#Wind">吹管</a>
+          <a class="dropdown-item" href="CMC_instrument.html#String">拉弦</a>
+          <a class="dropdown-item" href="CMC_instrument.html#Pluck">彈撥</a>
+          <a class="dropdown-item" href="CMC_instrument.html#Bass">低音</a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
+  </div>
+ 
+</nav>
+<div class="container-fluid" >
+  <div class="row">
+     <div class="m-auto" >
+      <div>
+        <h1>
+          聯絡我們
+        </h1>
+        <h3>
+          有什麼是想跟我們說嗎? 有什麼建議想告訴我們嗎? 都可以從這邊告訴我們喔!!!
+        </h3>
+        <div class="form-group">
+          <label for="Name">怎麼稱呼呢?</label>
+          <input type="name" class="form-control" id="stuName" placeholder="你的姓名">
+        </div>
+        <div class="form-group">
+          <label for="Email">電子郵件</label>
+          <input type="Email" class="form-control" id="Email" placeholder="例如:XXX@gmail.com">
+        </div>
+        <div class="form-group">
+          <label for="Text">想跟我們說什麼呢?</label>
+          <textarea type="text"class="form-control" id="Text" rows="10"placeholder="我最愛大成國樂社"></textarea>
+        </div>
+      <div class="row">
+        <div class="form-group col-10">
+        </div>
+        <div class="form-group col-2">
+          <button id="send" type="button" class="btn btn-warning">點我送出</button>
+        </div>
+      </div>
+      
+      </div>
+      
+     </div>
+  </div>
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function(){
+  $('#send').click(function(e){
+    alert('送出資料');
+        var status = true;
+        // 姓名
+        var Name = $('#stuName').val();
+        // 電話 
+        //Email
+        var Email = $('#Email').val(); 
+        //Birthday
+        var Text = $('#Text').val();
+        // 擋住不填資料邏輯
+        if(Name == ''){
+          $('#stuName').css('border','1px solid #ff0000');
+          status = false;
+        }
+        if(Email == ''){
+          alert('請填寫Email喔');
+          status = false;
+        }
+        // 如果 �必填欄位都過了 才會到這邊
+        if(status){
+          alert('資料都填完了');
+          // 增加日期資料
+          var currentdate = new Date();
+          var filltime = currentdate.getFullYear() + "/"
+                + (currentdate.getMonth() + 1) + "/"
+                + currentdate.getDate() + "  "
+                + currentdate.getHours() + ":"
+                + currentdate.getMinutes() + ":"
+                + currentdate.getSeconds();
+          // 打包 要的資料
+          var data = {
+            'name' : Name,
+            'Email': Email,
+            'Text': Text,
+            'time':filltime,
+          }
+          // 呼叫 send ajax function
+          send(data);
+          ;}
+        });
+        });
+    function send(data){
+      $.ajax({
+        // 這邊用get type
+        type: "get",
+        // api url - google appscript 產出的 url
+        url: "https://script.google.com/macros/s/AKfycby0zanAHsSTZKoVtMiDgvtMgsWSaXw3cn57ifMLV3bLWvokBvkr/exec",
+        // 剛剛整理好的資料帶入
+        data: data,
+        // 資料格式是JSON 
+        dataType: "JSON",
+        // 成功送出 會回頭觸發下面這塊感謝
+        success: function (response) {
+          console.log(response);
+          alert('填寫成功！！！我們會盡快用電子信箱回復您');
+        }
+      });}
+</script>	
+<!-- Bootstrap core JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	</body>
+</html>
